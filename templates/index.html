@@ -5,7 +5,11 @@
 
 {% block body %}
 <main>
-    <h2 class="logo">Welcome to "Name ten books" website!</h2>
-    <a href="/login">login & register</a>
+    <h2 class="logo">Welcome to "Name ten books" library!</h2>
+    {% if username %}
+    <p>Always feels nice to see you, {{ username }}!</p>
+    {% else %}
+    <p>Please <a href="/login">register</a> to continue.</p>
+    {% endif %}
 </main>
 {% endblock %}
