@@ -7,9 +7,20 @@
 <main>
     <h2 class="logo">Welcome to "Name ten books" library!</h2>
     {% if username %}
-    <p>Always feels nice to see you, {{ username }}!</p>
+        <p>Always feels nice to see you, {{ username }}!</p>
+        <br>
+        <br>
+        {% if book %}
+            <h3>Great choice! Let's take a look what I've found:</h3>
+        {% else %}
+            <form action="/" method="POST">
+                <label for="query">What book are you looking for?</label>
+                <br>
+                <input type="text" id="query" name="query" required>
+            </form>
+        {% endif %}
     {% else %}
-    <p>Please <a href="/login">register</a> to continue.</p>
+        <p>Please <a href="/login">register</a> to continue.</p>
     {% endif %}
 </main>
 {% endblock %}

@@ -9,10 +9,17 @@ app = Flask(__name__)
 app.secret_key = "awer7qwctnxeilqOAGFKS"
 
 
-@app.route('/')
+@app.route('/',  methods=["POST", "GET"])
 def index():
     if "user" in session:
         user = session["user"]
+        if request.method == "POST":
+            query = request.form["query"]
+            response = requests.get(SEARCH_URL, params={"q": query, "appid": API_KEY})
+            print(response.text)
+            return render_template('index.html', username=user, book=response.status_code == 200)
+        else:
+            pass
         return render_template('index.html', username=user)
     else:
         return render_template('index.html')
