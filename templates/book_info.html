@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>{{ book_info['volumeInfo']['title'] }}</title>
+{% endblock %}
+
+{% block body %}
+    <h1>{{ book_info['volumeInfo']['title'] }}</h1>
+    <p>Author: {{ ', '.join(book_info['volumeInfo']['authors']) | safe }}</p>
+    <p>Publisher: {{ book_info['volumeInfo']['publisher'] | safe }}</p>
+    <p>Pages: {{ book_info['volumeInfo']['pageCount'] | safe }}</p>
+    <p>Average rating: {{ book_info['volumeInfo']['averageRating'] | safe }}</p>
+    <p>Description: {{ book_info['volumeInfo']['description'] | safe }}</p>
+{% endblock %}

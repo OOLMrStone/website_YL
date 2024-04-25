@@ -17,6 +17,16 @@
             <br>
             <button type="submit" name="login">Login</button>
             <button type="submit" name="reg">Register</button>
+            {% if login_failed %}
+                <br>
+                <br>
+                <h3>Password is incorrect, please try again</h3>
+            {% endif %}
+            {% if user_not_found %}
+                <br>
+                <br>
+                <h3>Username not found, please try again</h3>
+            {% endif %}
         </form>
     </main>
 {% endblock %}

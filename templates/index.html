@@ -9,9 +9,13 @@
     {% if username %}
         <p>Always feels nice to see you, {{ username }}!</p>
         <br>
-        <br>
-        {% if book %}
+        {% if books %}
             <h3>Great choice! Let's take a look what I've found:</h3>
+            <ul>
+            {% for book in books %}
+                <li><a href="{{ url_for('book_info', book_id=book['id']) }}">{{ book['volumeInfo']['title'] }}</a></li>
+            {% endfor %}
+            </ul>
         {% else %}
             <form action="/" method="POST">
                 <label for="query">What book are you looking for?</label>
